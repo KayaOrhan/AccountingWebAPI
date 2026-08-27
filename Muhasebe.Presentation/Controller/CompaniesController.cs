@@ -1,0 +1,28 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Muhasebe.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany;
+using Muhasebe.Presentation.Abstraction;
+
+namespace Muhasebe.Presentation.Controller
+{
+    public class CompaniesController : ApiController
+    {
+        public CompaniesController(IMediator mediator) : base(mediator)
+        {
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> CreateCompany(CreateCompanyRequest req)
+        {
+            var response = await _mediator.Send(req);
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> MigrateCompanyDatabases()
+        {
+            var response = await _mediator.Send(new Muhasebe.Application.Features.AppFeatures.CompanyFeatures.Commands.MigrateCompanyDatabases.MigrateCompanyDatabasesRequest());
+            return Ok(response);
+        }
+    }
+}
+ 
