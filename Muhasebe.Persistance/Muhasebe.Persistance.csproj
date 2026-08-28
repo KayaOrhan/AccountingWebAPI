@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Configurations\" />
-    <Folder Include="Services\CompanyService\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Muhasebe.Domain.Abstraction;
 using Muhasebe.Domain.AppEntities;
 
 namespace Muhasebe.Persistance.Context
@@ -40,6 +41,24 @@ namespace Muhasebe.Persistance.Context
                 return new CompanyDbContext();
             }
         }
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker.Entries<Entity>();
 
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedDate = DateTime.UtcNow;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.UpdatedDate = DateTime.UtcNow;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+
+        }
     }
 }
