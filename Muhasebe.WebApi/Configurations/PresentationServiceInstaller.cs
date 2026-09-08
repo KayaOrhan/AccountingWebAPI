@@ -22,6 +22,7 @@ namespace Muhasebe.WebApi.Configurations
                     };
 
                     document.Components ??= new OpenApiComponents();
+                    document.Components.SecuritySchemes ??= new Dictionary<string, IOpenApiSecurityScheme>();
                     document.Components.SecuritySchemes.Add("Bearer", scheme);
 
                     return Task.CompletedTask;

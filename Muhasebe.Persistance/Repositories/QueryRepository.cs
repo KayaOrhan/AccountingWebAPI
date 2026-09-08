@@ -13,11 +13,9 @@ namespace Muhasebe.Persistance.Repositories
          EF.CompileAsyncQuery((CompanyDbContext context, string id, bool isTracking) =>
              isTracking ? context.Set<T>().FirstOrDefault(e => e.Id == id) : context.Set<T>().AsNoTracking().FirstOrDefault(e => e.Id == id));
 
-
         private static readonly Func<CompanyDbContext, bool, Task<T>> GetFirstCompiled =
          EF.CompileAsyncQuery((CompanyDbContext context, bool isTracking) =>
              isTracking ? context.Set<T>().FirstOrDefault() : context.Set<T>().AsNoTracking().FirstOrDefault());
-
 
         private static readonly Func<CompanyDbContext, Expression<Func<T, bool>>, bool, Task<T>> GetFirstByExpressionCompiled =
          EF.CompileAsyncQuery((CompanyDbContext context, Expression<Func<T, bool>> predicate, bool isTracking) =>
@@ -46,7 +44,6 @@ namespace Muhasebe.Persistance.Repositories
             return await GetByIdCompiled(_companyDbContext, id, isTracking);
 
         }
-
         public async Task<T> GetFirst(bool isTracking = true)
         {
             return await GetFirstCompiled(_companyDbContext, isTracking);

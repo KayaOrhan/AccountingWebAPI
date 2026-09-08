@@ -10,9 +10,7 @@ namespace Muhasebe.Persistance.Repositories
     {
         private static readonly Func<CompanyDbContext, string, Task<T>> GetByIdCompiled =
             EF.CompileAsyncQuery((CompanyDbContext context, string id) =>
-                context.Set<T>().FirstOrDefault(e => e.Id == id)); //direk  context.Set<T>().FirstOrDefault bunu kullanmaktan biraz daha hızlı bu compile methodu
-
-
+                context.Set<T>().FirstOrDefault(e => e.Id == id));
 
         private  CompanyDbContext _companyDbContext;
 
@@ -33,8 +31,6 @@ namespace Muhasebe.Persistance.Repositories
         {
             await Entity.AddRangeAsync(entities);
         }
-
-       
 
         public void Remove(T entity)
         {

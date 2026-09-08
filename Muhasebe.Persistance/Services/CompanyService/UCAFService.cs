@@ -2,7 +2,6 @@
 using Muhasebe.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF;
 using Muhasebe.Application.Services.CompanyServices;
 using Muhasebe.Domain;
-using Muhasebe.Domain.AppEntities;
 using Muhasebe.Domain.CompanyEntities;
 using Muhasebe.Domain.Repositories.UCAFRepositories;
 using Muhasebe.Persistance.Context;
@@ -13,12 +12,11 @@ namespace Muhasebe.Persistance.Services.CompanyService
     {
         private readonly IUCAFCommandRepository _ucafCommandRepository;
         private readonly IContextService _contextService;
-
         private readonly IUnitOfWork _unitOfWork;
         private CompanyDbContext _companyDbContext;
         public UCAFService(IUCAFCommandRepository ucafCommandRepository, IContextService contextService, IUnitOfWork unitOfWork)
         {
-            _ucafCommandRepository = ucafCommandRepository  ;
+            _ucafCommandRepository = ucafCommandRepository;
             _contextService = contextService;
             _unitOfWork = unitOfWork;
         }
