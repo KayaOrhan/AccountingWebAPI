@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Muhasebe.Domain.Abstraction;
@@ -40,6 +41,18 @@ namespace Muhasebe.Persistance.Context
             return base.SaveChangesAsync(cancellationToken);
         }
 
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Ignore<IdentityUserLogin<string>>();
+            builder.Ignore<IdentityUserRole<string>>();
+            builder.Ignore<IdentityUserClaim<string>>();
+            builder.Ignore<IdentityUserToken<string>>();
+            builder.Ignore<IdentityRoleClaim<string>>();
+
+        }
         public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
         {
             public AppDbContext CreateDbContext(string[] args)
