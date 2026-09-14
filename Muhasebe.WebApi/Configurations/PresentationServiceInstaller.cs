@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi;
+using Muhasebe.WebApi.Middleware;
 
 namespace Muhasebe.WebApi.Configurations
 {
@@ -6,6 +7,8 @@ namespace Muhasebe.WebApi.Configurations
     {
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<ExceptionMiddleware>();
+
             services.AddControllers().AddApplicationPart(typeof(Muhasebe.Presentation.AssemblyReference).Assembly);
 
             services.AddOpenApi(options =>

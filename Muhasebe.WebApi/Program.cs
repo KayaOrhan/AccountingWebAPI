@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Identity;
+using Muhasebe.Domain.AppEntities.Identity;
 using Muhasebe.WebApi.Configurations;
+using Muhasebe.WebApi.Middleware;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +22,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
+app.UseExceptionMiddleware();
 
 app.UseHttpsRedirection();
 
