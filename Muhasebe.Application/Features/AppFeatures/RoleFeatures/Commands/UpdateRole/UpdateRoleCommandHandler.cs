@@ -1,30 +1,30 @@
-﻿using MediatR;
+﻿using Muhasebe.Application.Messaging;
 using Muhasebe.Application.Services.AppServices;
 using Muhasebe.Domain.AppEntities.Identity;
 
 namespace Muhasebe.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole
 {
-    public sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleRequest, UpdateRoleResponse>
+    public sealed class UpdateRoleCommandHandler : ICommandHandler<UpdateRoleCommand, UpdateRoleCommandResponse>
     {
         private readonly IRoleService _roleService;
 
-        public UpdateRoleHandler(IRoleService roleService)
+        public UpdateRoleCommandHandler(IRoleService roleService)
         {
             _roleService = roleService;
         }
 
-        public async Task<UpdateRoleResponse> Handle(UpdateRoleRequest request, CancellationToken cancellationToken)
+        public async Task<UpdateRoleCommandResponse> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
             AppRole role = await _roleService.GetById(request.Id);
 
             if (role == null)
             {
-                return new UpdateRoleResponse { Message = "Role not found." };
+                return new UpdateRoleCommandResponse { Message = "Role not found." };
             }
 
             if (role.Code == request.Code && role.Name == request.Name)
             {
-                return new UpdateRoleResponse { Message = "No changes detected." };
+                return new UpdateRoleCommandResponse { Message = "No changes detected." };
             }
 
             if (role.Code != request.Code)
@@ -32,7 +32,7 @@ namespace Muhasebe.Application.Features.AppFeatures.RoleFeatures.Commands.Update
                 AppRole existingRoleWithCode = await _roleService.GetByCode(request.Code);
                 if (existingRoleWithCode != null && existingRoleWithCode.Id != role.Id)
                 {
-                    return new UpdateRoleResponse { Message = "A role with the same code already exists." };
+                    return new UpdateRoleCommandResponse { Message = "A role with the same code already exists." };
                 }
             }
 
@@ -41,7 +41,7 @@ namespace Muhasebe.Application.Features.AppFeatures.RoleFeatures.Commands.Update
 
             await _roleService.UpdateAsync(role);
 
-            return new UpdateRoleResponse { Message = "Role updated successfully." };
+            return new UpdateRoleCommandResponse { Message = "Role updated successfully." };
         }
     }
 }

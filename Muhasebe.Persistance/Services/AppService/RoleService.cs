@@ -17,7 +17,7 @@ namespace Muhasebe.Persistance.Services.AppService
             _roleManager = roleManager;
         }
 
-        public async Task AddAsync(CreateRoleRequest request)
+        public async Task AddAsync(CreateRoleCommand request)
         {
             AppRole role = request.Adapt<AppRole>();
             role.Id = Guid.NewGuid().ToString();

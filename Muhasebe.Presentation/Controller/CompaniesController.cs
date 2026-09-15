@@ -11,7 +11,7 @@ namespace Muhasebe.Presentation.Controller
         {
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateCompany(CreateCompanyRequest req)
+        public async Task<IActionResult> CreateCompany(CreateCompanyCommand req)
         {
             var response = await _mediator.Send(req);
             return Ok(response);
@@ -20,7 +20,7 @@ namespace Muhasebe.Presentation.Controller
         [HttpGet("[action]")]
         public async Task<IActionResult> MigrateCompanyDatabases()
         {
-            var response = await _mediator.Send(new Muhasebe.Application.Features.AppFeatures.CompanyFeatures.Commands.MigrateCompanyDatabases.MigrateCompanyDatabasesRequest());
+            var response = await _mediator.Send(new Muhasebe.Application.Features.AppFeatures.CompanyFeatures.Commands.MigrateCompanyDatabases.MigrateCompanyDatabasesCommand());
             return Ok(response);
         }
     }

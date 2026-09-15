@@ -15,31 +15,31 @@ namespace Muhasebe.Presentation.Controller
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest request)
+        public async Task<IActionResult> CreateRole([FromBody] CreateRoleCommand request)
         {
-            CreateRoleResponse response = await _mediator.Send(request);
+            CreateRoleCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllRoles()
         {
-            GetAllRolesRequest request = new GetAllRolesRequest();
-            GetAllRolesResponse response = await _mediator.Send(request);
+            GetAllRolesQuery request = new GetAllRolesQuery();
+            GetAllRolesQueryResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateRole(UpdateRoleRequest request)
+        public async Task<IActionResult> UpdateRole(UpdateRoleCommand request)
         {
-            UpdateRoleResponse response = await _mediator.Send(request);
+            UpdateRoleCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpDelete("[action]/{roleId}")]
         public async Task<IActionResult> DeleteRole(string roleId)
         {
-            var request = new DeleteRoleRequest
+            var request = new DeleteRoleCommand
             {
                 Id = roleId
             };

@@ -21,7 +21,7 @@ namespace Muhasebe.Persistance.Services.CompanyService
             _unitOfWork = unitOfWork;
         }
 
-        public async Task CreateUCAFAsync(CreateUCAFRequest request)
+        public async Task CreateUCAFAsync(CreateUCAFCommand request)
         {
             _companyDbContext = (CompanyDbContext)_contextService.CreateDbContextInstance(request.CompanyId);
 

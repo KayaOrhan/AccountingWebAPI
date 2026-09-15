@@ -17,7 +17,7 @@ namespace Muhasebe.Persistance.Services.AppService
             _context = context;
         }
 
-        public async Task CreateCompany(CreateCompanyRequest request)
+        public async Task CreateCompany(CreateCompanyCommand request)
         {
             Company company = request.Adapt<Company>();
             company.Id = Guid.NewGuid().ToString();

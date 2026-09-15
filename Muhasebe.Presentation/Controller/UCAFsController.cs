@@ -13,9 +13,9 @@ namespace Muhasebe.Presentation.Controller
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateUCAFsAsync(CreateUCAFRequest request)
+        public async Task<IActionResult> CreateUCAFsAsync(CreateUCAFCommand request)
         {
-            CreateUCAFResponse response = await _mediator.Send(request);
+            CreateUCAFCommandResponse response = await _mediator.Send(request);
 
             return Ok(response);
         }
