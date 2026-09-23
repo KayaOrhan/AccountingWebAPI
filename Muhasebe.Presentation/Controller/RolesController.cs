@@ -39,10 +39,8 @@ namespace Muhasebe.Presentation.Controller
         [HttpDelete("[action]/{roleId}")]
         public async Task<IActionResult> DeleteRole(string roleId)
         {
-            var request = new DeleteRoleCommand
-            {
-                Id = roleId
-            };
+            var request = new DeleteRoleCommand(roleId);
+            
             var response = await _mediator.Send(request);
             return Ok(response);
         }

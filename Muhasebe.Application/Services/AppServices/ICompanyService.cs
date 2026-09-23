@@ -9,7 +9,7 @@ namespace Muhasebe.Application.Services.AppServices
     {
         Task CreateCompany(CreateCompanyCommand request);
 
-        Task<Company?>GetCompanyByName(string name);
+        Task<Company>GetCompanyByName(string name);
 
         Task MigrateCompanyDatabases();
     }

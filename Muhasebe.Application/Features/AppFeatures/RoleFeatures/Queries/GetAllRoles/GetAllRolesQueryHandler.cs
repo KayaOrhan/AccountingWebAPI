@@ -17,10 +17,7 @@ namespace Muhasebe.Application.Features.AppFeatures.RoleFeatures.Queries.GetAllR
         {
             IList<AppRole> roles = await _roleService.GetAllRolesAsync();
 
-            return new GetAllRolesQueryResponse
-            {
-                Roles = roles
-            };
+            return new GetAllRolesQueryResponse(roles);
 
         }
     }
