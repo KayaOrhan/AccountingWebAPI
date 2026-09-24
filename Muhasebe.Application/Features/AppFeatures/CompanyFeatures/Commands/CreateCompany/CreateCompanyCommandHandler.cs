@@ -23,7 +23,7 @@ namespace Muhasebe.Application.Features.AppFeatures.CompanyFeatures.Commands.Cre
                 throw new Exception("A company with this name already exists.");
             }
 
-            await _companyService.CreateCompany(request);
+            await _companyService.CreateCompany(request, cancellationToken);
             return new();
         }
     }

@@ -1,6 +1,5 @@
 ﻿
 using Muhasebe.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
-using Muhasebe.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole;
 using Muhasebe.Domain.AppEntities.Identity;
 
 namespace Muhasebe.Application.Services.AppServices

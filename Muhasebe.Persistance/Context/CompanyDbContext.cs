@@ -13,9 +13,9 @@ namespace Muhasebe.Persistance.Context
         {
             if(company != null)
             {
-                if (!string.IsNullOrWhiteSpace(company?.UserId) && !string.IsNullOrWhiteSpace(company?.Password))
+                if (!string.IsNullOrWhiteSpace(company?.ServerUserId) && !string.IsNullOrWhiteSpace(company?.ServerPassword))
                 {
-                    ConnectionString = $"Data Source={company?.ServerName};Initial Catalog={company?.DatabaseName};User ID={company?.UserId};Password={company?.Password};Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False;Command Timeout=30";
+                    ConnectionString = $"Data Source={company?.ServerName};Initial Catalog={company?.DatabaseName};User ID={company?.ServerUserId};Password={company?.ServerPassword};Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False;Command Timeout=30";
                 }
                 else
                 {

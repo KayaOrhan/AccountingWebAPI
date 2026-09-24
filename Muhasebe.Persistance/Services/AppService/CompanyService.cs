@@ -17,15 +17,15 @@ namespace Muhasebe.Persistance.Services.AppService
             _context = context;
         }
 
-        public async Task CreateCompany(CreateCompanyCommand request)
+        public async Task CreateCompany(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             Company company = request.Adapt<Company>();
             company.Id = Guid.NewGuid().ToString();
-            await _context.Set<Company>().AddAsync(company);
-            await _context.SaveChangesAsync();
+            await _context.Set<Company>().AddAsync(company, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<Company?> GetCompanyByName(string name)
+        public async Task<Company> GetCompanyByName(string name)
         {
             return await _context.Set<Company>().FirstOrDefaultAsync(c => c.Name == name);
         }

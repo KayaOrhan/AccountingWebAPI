@@ -45,10 +45,13 @@ namespace Muhasebe.Persistance.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("ServerName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ServerName")
+                    b.Property<string>("ServerPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServerUserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaxDepartment")
@@ -59,9 +62,6 @@ namespace Muhasebe.Persistance.Migrations
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

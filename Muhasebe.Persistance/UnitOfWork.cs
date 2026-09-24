@@ -12,9 +12,9 @@ namespace Muhasebe.Persistance
             _companyDbContext = (CompanyDbContext)context;
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            int count = await _companyDbContext.SaveChangesAsync();
+            int count = await _companyDbContext.SaveChangesAsync(cancellationToken);
             return count;
         }
     }

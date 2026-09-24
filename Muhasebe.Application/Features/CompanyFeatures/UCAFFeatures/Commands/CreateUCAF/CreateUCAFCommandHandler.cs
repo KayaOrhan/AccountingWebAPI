@@ -14,7 +14,7 @@ namespace Muhasebe.Application.Features.CompanyFeatures.UCAFFeatures.Commands.Cr
 
         public async Task<CreateUCAFCommandResponse> Handle(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
-            await _ucafService.CreateUCAFAsync(request);
+            await _ucafService.CreateUCAFAsync(request, cancellationToken);
             return new();
 
         }

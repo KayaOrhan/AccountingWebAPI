@@ -7,12 +7,10 @@ namespace Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Login
         public LoginCommandValidator()
         {
             RuleFor(x => x.EmailOrUserName)
-                .NotNull().WithMessage("Email is required.")
                 .NotEmpty().WithMessage("Email is required.")
                 .EmailAddress().WithMessage("Invalid email format.");
 
             RuleFor(x => x.Password)
-                .NotNull().WithMessage("Password is required.")
                 .NotEmpty().WithMessage("Password is required.")
                 .MinimumLength(6).WithMessage("Password must be at least 6 characters long.")
                 .Matches(@"[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
