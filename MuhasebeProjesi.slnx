@@ -11,5 +11,7 @@
     <Project Path="Muhasebe.Persistance/Muhasebe.Persistance.csproj" />
     <Project Path="Muhasebe.Presentation/Muhasebe.Presentation.csproj" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="Muhasebe.UnitTest/Muhasebe.UnitTest.csproj" Id="ac859a1f-d9d1-428a-81ab-503b96b26fce" />
+  </Folder>
 </Solution>
