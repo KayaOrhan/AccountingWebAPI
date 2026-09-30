@@ -2,7 +2,7 @@
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Login;
+using Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Commands.Login;
 using Muhasebe.Presentation.Abstraction;
 
 namespace Muhasebe.Presentation.Controller

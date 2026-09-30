@@ -4,7 +4,7 @@ using Muhasebe.Application.Abstractions;
 using Muhasebe.Application.Messaging;
 using Muhasebe.Domain.AppEntities.Identity;
 
-namespace Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Login
+namespace Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Commands.Login
 {
     public class LoginCommandHandler : ICommandHandler<LoginCommand, LoginCommandResponse>
     {

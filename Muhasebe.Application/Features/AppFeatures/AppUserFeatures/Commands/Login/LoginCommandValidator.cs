@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Login
+namespace Muhasebe.Application.Features.AppFeatures.AppUserFeatures.Commands.Login
 {
     public sealed class LoginCommandValidator : AbstractValidator<LoginCommand>
     {
